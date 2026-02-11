@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}Pedidos{% endblock %}
+
+{% block content %}
+<h1>Pedidos</h1>
+
+<table border="1" cellpadding="8">
+    <tr>
+        <th>ID</th>
+        <th>Cliente</th>
+        <th>Descripción</th>
+        <th>Tipo de Produto</th>
+        <th>Estado</th>
+        <th>Fecha de Pedido</th>
+        <th>Fecha de Entrega aproximada</th>
+        <th>Precio Acordado</th>
+        <th>Saldo pendiente</th>
+        <th>Total pagado</th>
+    </tr>
+
+    {% for order in orders %}
+    <tr>
+        <td>#{{ order.id }}</td>
+        <td>{{ order.client }}</td>
+        <td>{{ order.description }}</td>
+        <td>{{ order.product_type }}</td>
+        <td>{{ order.get_status_display }}</td>
+        <td>{{ order.order_date }}</td>
+        <td>{{ order.estimated_delivery_date }}</td>
+        <td>{{ order.agreed_price }}</td>
+        <td>{{ order.pending_balance }}</td>
+        <td>{{ order.total_paid }}</td>
+    </tr>
+    {% empty %}
+    <tr>
+        <td colspan="5">No hay pedidos</td>
+    </tr>
+    {% endfor %}
+
+</table>
+
+{% endblock %}

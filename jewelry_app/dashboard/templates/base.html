@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Sistema de Joyas{% endblock %}</title>
+</head>
+<body>
+
+<header style="margin-bottom: 20px;">
+    <strong>Sistema de Joyas</strong>
+
+    {% if user.is_authenticated %}
+        | <a href="{% url 'order_list' %}">📦 Pedidos</a>
+        | <a href="{% url 'logout' %}">🚪 Cerrar sesión</a>
+    {% endif %}
+</header>
+
+<hr>
+
+<main>
+    {% block content %}
+    {% endblock %}
+</main>
+
+</body>
+</html>
