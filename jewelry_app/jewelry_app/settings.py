@@ -39,12 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'clients',
     'orders',
-<<<<<<< HEAD
     'payments',
     'dashboard'
-=======
-    'payments'
->>>>>>> 496ae7cda435bc204ddbf4e02f9a08e65d666e79
 ]
 
 MIDDLEWARE = [
