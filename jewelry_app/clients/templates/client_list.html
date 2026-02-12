@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}Clientes{% endblock %}
+
+{% block content %}
+<h1>Clientes</h1>
+
+<a href="{% url 'client_create' %}">➕ Nuevo cliente</a>
+
+<table border="1" cellpadding="8">
+    <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Teléfono</th>
+        <th>Correo</th>
+        <th>Acciones</th>
+    </tr>
+
+    {% for client in clients %}
+    <tr>
+        <td>#{{ client.id }}</td>
+        <td>{{ client.name }}</td>
+        <td>{{ client.phone_number }}</td>
+        <td>{{ client.email }}</td>
+        <td>
+            <a href="{% url 'client_update' client.id %}">Editar</a>
+        </td>
+    </tr>
+    {% empty %}
+    <tr>
+        <td colspan="5">No hay clientes</td>
+    </tr>
+    {% endfor %}
+
+</table>
+
+{% endblock %}

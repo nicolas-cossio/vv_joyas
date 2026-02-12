@@ -11,6 +11,7 @@
 
     {% if user.is_authenticated %}
         | <a href="{% url 'order_list' %}">📦 Pedidos</a>
+        |  <a href="{% url 'client_list' %}">👥 Clientes</a>
         | <a href="{% url 'logout' %}">🚪 Cerrar sesión</a>
     {% endif %}
 </header>
