@@ -5,11 +5,13 @@
 {% block content %}
 <h1>Pedidos</h1>
 
+<a href="{% url 'order_create' %}">➕ Nuevo pedido</a>
+
 <table border="1" cellpadding="8">
     <tr>
         <th>ID</th>
-        <th>Cliente</th>
         <th>Descripción</th>
+        <th>Cliente</th>
         <th>Tipo de Produto</th>
         <th>Estado</th>
         <th>Fecha de Pedido</th>
@@ -17,20 +19,25 @@
         <th>Precio Acordado</th>
         <th>Saldo pendiente</th>
         <th>Total pagado</th>
+        <th>Acciones</th>
     </tr>
 
     {% for order in orders %}
     <tr>
         <td>#{{ order.id }}</td>
-        <td>{{ order.client }}</td>
         <td>{{ order.description }}</td>
-        <td>{{ order.product_type }}</td>
+        <td>{{ order.client }}</td>
+        <td>{{ order.get_product_type_display }}</td>
         <td>{{ order.get_status_display }}</td>
         <td>{{ order.order_date }}</td>
         <td>{{ order.estimated_delivery_date }}</td>
         <td>{{ order.agreed_price }}</td>
         <td>{{ order.pending_balance }}</td>
         <td>{{ order.total_paid }}</td>
+        <td>
+          <a href="{% url 'order_detail' order.id %}">Ver detalle</a>
+          <a href="{% url 'order_update' order.id %}">Editar</a>
+        </td>
     </tr>
     {% empty %}
     <tr>

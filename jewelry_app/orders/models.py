@@ -10,9 +10,20 @@ class Order(models.Model):
         DELIVERED = 'delivered', 'Entregado'
         CANCELLED = 'cancelled', 'Cancelado'
 
+    class ProductType(models.TextChoices):
+        RING = 'ring', 'Anillo'
+        EARRINGS = 'earrings', 'Aretes'
+        NECKLACE = 'necklace', 'Cadena'
+        PENDANT = 'pendant', 'Dije'
+        BRACELET = 'bracelet', 'Pulsera'
+        OTHER = 'other', 'Otro'
+
     client = models.ForeignKey(Client, on_delete=models.PROTECT, related_name='orders')
     description = models.TextField()
-    product_type = models.CharField(max_length=80, blank=True)
+    product_type = models.CharField(
+        max_length=20,
+        choices=ProductType.choices,
+        blank=True)
     status = models.CharField(
         max_length=20,
         choices=Status.choices,
